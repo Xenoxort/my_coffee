@@ -7,8 +7,9 @@ from money import Money
 
 base_resources = {
     "Water": 300,
+    "Coffee": 100,
     "Milk": 200,
-    "Coffee": 100
+
 }
 
 resources = base_resources.copy()
@@ -26,9 +27,28 @@ while is_on:
     elif choice == "off":
         is_on = False
 
-    #Checking and updating money
+    #Checking Resources
     else:
-        my_money.money_check(choice)
-        resources["Money"] = my_money.money
+        ingr = menu[choice.title()]["ingredients"]
+        if resources["Water"] < ingr["Water"]:
+            print("Sorry there is not enough water.")
+        if resources["Coffee"] < ingr["Coffee"]:
+            print("Sorry there is not enough coffee.")
+        if resources["Milk"] < ingr["Milk"]:
+            print("Sorry there is not enough milk.")
+
+        else:
+            print("AMAZING")
+
+            #Money will be checked only if there is enough resources
+            enough_money = my_money.money_check(choice)
+            resources["Money"] = my_money.money
+
+            #Deducting resources when there is enough resource and money
+            if enough_money:
+                resources["Water"] -= ingr["Water"]
+                resources["Coffee"] -= ingr["Coffee"]
+                resources["Milk"] -= ingr["Milk"]
+
 
 
