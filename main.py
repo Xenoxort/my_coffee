@@ -1,8 +1,9 @@
 from MENU import menu
+from money import Money
 
-espresso = menu["Espresso"]
-latte = menu["Latte"]
-cappuccino = menu["Cappuccino"]
+#espresso = menu["Espresso"]
+#latte = menu["Latte"]
+#cappuccino = menu["Cappuccino"]
 
 base_resources = {
     "Water": 300,
@@ -11,8 +12,8 @@ base_resources = {
 }
 
 resources = base_resources.copy()
-resources["Money"] = 0
-
+my_money = Money()
+resources["Money"] = my_money.money
 is_on = True
 
 while is_on:
@@ -22,28 +23,12 @@ while is_on:
         for key, value in resources.items():
             print(f"{key}: {value}")
 
-    elif choice == "espresso":
-
-        #Money Check
-        print("Please insert coins.")
-        quarters = int(input("How many quarters?: "))
-        dimes = int(input("How many dimes?: "))
-        nickles = int(input("How many nickles?: "))
-        pennies = int(input("How many pennies?: "))
-
-        money_in = quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
-        cost = espresso["cost"]
-        print(money_in)
-        print(cost)
-        if money_in < espresso["cost"]:
-            print("Sorry that's not enough money. Money refunded.")
-        else:
-            print(f"Here is ${(money_in - cost):.2f} in change.")
-            print("Here is your espresso. Enjoy!")
-            resources["Money"] += cost
-
-
     elif choice == "off":
         is_on = False
+
+    #Checking and updating money
+    else:
+        my_money.money_check(choice)
+        resources["Money"] = my_money.money
 
 
