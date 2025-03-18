@@ -1,19 +1,31 @@
 menu = {
     "Espresso": {
-        "Water": 50,
-        "Coffee": 18,
+        "ingredients": {
+                "Water": 50,
+                "Coffee": 18,
+        },
+        "cost": 1.5
+
     },
 
     "Latte": {
-        "Water": 200,
-        "Coffee": 24,
-        "Milk": 150,
+        "ingredients": {
+                "Water": 200,
+                "Coffee": 24,
+                "Milk": 150
+        },
+        "cost": 2.5
+
     },
 
     "Cappuccino": {
-        "Water": 250,
-        "Coffee": 24,
-        "Milk": 100,
-    }
+        "ingredients": {
+                "Water": 250,
+                "Coffee": 24,
+                "Milk": 100
+        },
+        "cost": 3.0
+
+    },
 
 }
