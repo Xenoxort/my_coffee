@@ -13,6 +13,7 @@ class Resources:
 
 
     def check_resources(self, choice):
+        '''Based on the customer's choice it checks whether there are sufficient resources'''
         enough = False
         self.ingr = menu[choice.title()]["ingredients"]
         if self.resources["Water"] < self.ingr["Water"]:
@@ -27,6 +28,7 @@ class Resources:
         return enough
 
     def deduct_resources(self):
+        '''If there are enough money and resources it deducts the resources from the current one.'''
         self.resources["Water"] -= self.ingr["Water"]
         self.resources["Coffee"] -= self.ingr["Coffee"]
         self.resources["Milk"] -= self.ingr["Milk"]
