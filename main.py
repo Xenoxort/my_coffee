@@ -1,22 +1,17 @@
 from MENU import menu
 from money import Money
+from resources import *
 
-#espresso = menu["Espresso"]
-#latte = menu["Latte"]
-#cappuccino = menu["Cappuccino"]
+#Resource Class
+res_class = Resources()
+resources = res_class.resources
 
-base_resources = {
-    "Water": 300,
-    "Coffee": 100,
-    "Milk": 200,
-
-}
-
-resources = base_resources.copy()
+#Money Class
 my_money = Money()
 resources["Money"] = my_money.money
-is_on = True
 
+#Coffee loop
+is_on = True
 while is_on:
     choice = input(f"What would you like? (espresso/latte/cappuccino): ").lower()
 
@@ -29,26 +24,18 @@ while is_on:
 
     #Checking Resources
     else:
-        ingr = menu[choice.title()]["ingredients"]
-        if resources["Water"] < ingr["Water"]:
-            print("Sorry there is not enough water.")
-        if resources["Coffee"] < ingr["Coffee"]:
-            print("Sorry there is not enough coffee.")
-        if resources["Milk"] < ingr["Milk"]:
-            print("Sorry there is not enough milk.")
+        print("AMAZING")
+        enough_resources = res_class.check_resources(choice)
 
-        else:
-            print("AMAZING")
-
-            #Money will be checked only if there is enough resources
+        #Money will be checked only if there is enough resources
+        if enough_resources:
             enough_money = my_money.money_check(choice)
-            resources["Money"] = my_money.money
 
             #Deducting resources when there is enough resource and money
             if enough_money:
-                resources["Water"] -= ingr["Water"]
-                resources["Coffee"] -= ingr["Coffee"]
-                resources["Milk"] -= ingr["Milk"]
+                res_class.deduct_resources()
+                resources = res_class.resources
+                resources["Money"] = my_money.money
 
 
 
