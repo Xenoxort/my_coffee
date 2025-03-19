@@ -18,7 +18,9 @@ class Money:
 
         if money_in < cost:
             print("Sorry that's not enough money. Money refunded.")
+            return False
         else:
             print(f"Here is ${(money_in - cost):.2f} in change.")
             print("Here is your espresso. Enjoy!")
             self.money += cost
+            return True
