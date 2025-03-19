@@ -1,0 +1,6 @@
+This project is about a coffee machine that have 4 resources: water, coffee, milk and money.
+The customer can choose from 3 coffees: espresso, latte, cappuccino.
+After the choice we need to check whether there is enough resources in the coffee machine,
+and if yes we ask for money from the customer. Then we check whether the given money is enough
+for the chosen coffee. If yes, only then do we give the coffee and deduct the resources
+that were used for that coffee.
